@@ -1,0 +1,24 @@
+<div class="wallet-container">
+  <form class="wallet-container" [formGroup]="options">
+    <div>
+      <mat-checkbox formControlName="isActive">Is Active?</mat-checkbox>
+    </div>
+    <div>
+      <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatPlaceholder]="options.value.floatPlaceholder">
+        <input matInput placeholder="ID" required readonly [value]="wallet.id">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatPlaceholder]="options.value.floatPlaceholder">
+        <input matInput placeholder="Name" required [value]="wallet.Name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-list>
+        <mat-list-item *ngFor="let transaction of wallet.Transactions">
+          <wd-transaction [transaction]="transaction"></wd-transaction>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </form>
+</div>

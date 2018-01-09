@@ -1,0 +1,9 @@
+<wd-header name="{{ name }}" (click)="toggleSidebar()"></wd-header>
+<mat-sidenav-container>
+  <mat-sidenav #sidebar>
+    <wd-menu [entries]="menu" (click)="toggleSidebar()"></wd-menu>
+  </mat-sidenav>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

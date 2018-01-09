@@ -1,0 +1,4 @@
+<div *ngFor="let entry of (routes | filterRoutes)">
+  <a [routerLink]="entry.path" routerLinkActive="active" mat-button (click)="onClick()">{{entry.data.title}}</a>
+  <div *ngIf="entry.children"><p *ngFor="let child of entry.children">bla</p></div>
+</div>

@@ -1,0 +1,18 @@
+.account-container {
+  display: grid;
+  margin: 10px 20px;
+  width: 100%;
+  flex-direction: row;
+
+  > * {
+    width: 100%;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  form > * {
+    margin: 5px 0;
+  }
+}
