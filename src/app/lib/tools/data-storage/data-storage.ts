@@ -31,9 +31,11 @@ export class DataStorage {
         this.values.push(<Value>{ instance: guid, property: prop, value: data[prop] });
       });
     } else {
-      const instance = this.instances.filter((i: Instance) => i.id === guid)[0];
-      if (instance == null) console.log(`guid not found: ${guid}`);
+      if (this.instances.filter((i: Instance) => i.id === guid)[0] == null) console.log(`guid not found: ${guid}`);
       
+      propertiesList.forEach(prop => {
+        (<Value> this.values.filter((v: Value) => v.instance === guid && v.property === prop)[0]).value = data[prop];
+      });
     }
   }
 
