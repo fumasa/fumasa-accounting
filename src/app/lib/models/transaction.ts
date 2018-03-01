@@ -3,7 +3,7 @@ import { CurrencyFormat, DateTimeFormat, DefaultCulture } from '../tools/formats
 import * as moment from 'moment';
 
 export class Transaction {
-  readonly Amount: number;
+  readonly amount: number;
   readonly TransactionType: TransactionType;
   readonly transactionDate: Date;
   private visibleDate: Date | null = null;
@@ -13,7 +13,7 @@ export class Transaction {
   }
 
   public get AmountStr() : string {
-    return `${this.Amount.toLocaleString(DefaultCulture, CurrencyFormat)}`;
+    return `${this.amount.toLocaleString(DefaultCulture, CurrencyFormat)}`;
   }
 
   public get TransactionDateStr() : string {
@@ -28,7 +28,7 @@ export class Transaction {
       transactionDate?: Date,
       tags?: string[]
     } = {}) {
-      this.Amount = values.amount || 0;
+      this.amount = values.amount || 0;
       this.TransactionType = values.transactionType || TransactionType.Credit;
       this.transactionDate = values.transactionDate || new Date();
       this.Tags = values.tags || [];

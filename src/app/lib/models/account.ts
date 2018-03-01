@@ -20,18 +20,18 @@ export class Account {
   }
 
   private wallets: Wallet[];
-  public Name: string;
+  public name: string;
   readonly id: string;
 
   constructor(values: { id?: string, name?: string, wallets?: Wallet[] } = {}) {
     this.id = values.id || uuid();
-    this.Name = values.name || '';
+    this.name = values.name || '';
     this.wallets = values.wallets || [];
   }
 
   getWalletByName(walletName: string, init: Date = Date_Min, end: Date = Date_Max): Wallet {
     return (this.Wallets
-      .filter((w) => w.Name === walletName)[0] as Wallet).WalletBetweenDates(init, end);
+      .filter((w) => w.name === walletName)[0] as Wallet).WalletBetweenDates(init, end);
   }
 
   getWalletByGuid(guid: string, init: Date = Date_Min, end: Date = Date_Max): Wallet {

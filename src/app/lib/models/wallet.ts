@@ -8,7 +8,7 @@ export class Wallet {
     return this.transactions
       .filter(f => filter(f))
       .map(t => t.TransactionType == TransactionType.Credit 
-        ? t.Amount : -1 * t.Amount)
+        ? t.amount : -1 * t.amount)
         .reduce((sum, current) => sum + current) || 0;
   }
 
@@ -22,12 +22,12 @@ export class Wallet {
   }
 
   protected transactions: Transaction[];
-  public Name: string;
+  public name: string;
   readonly id: string;
 
   constructor(values: { id?: string, name?: string, transactions?: Transaction[] } = {}) {
     this.id = values.id || uuid();
-    this.Name = values.name || '';
+    this.name = values.name || '';
     this.transactions = values.transactions || [];
   }
 
@@ -36,7 +36,7 @@ export class Wallet {
       if (end !== Date_Max)
         return new Wallet({
           id: this.id, 
-          name: `${this.Name}|${init}-${end}`, 
+          name: `${this.name}|${init}-${end}`, 
           transactions: this.Transactions.filter((t) => {
               return t.TransactionDate >= init && t.TransactionDate <= end;
             })
@@ -44,7 +44,7 @@ export class Wallet {
       else
         return new Wallet({
           id: this.id, 
-          name: `${this.Name}|${init}-`, 
+          name: `${this.name}|${init}-`, 
           transactions: this.Transactions.filter((t) => {
               return t.TransactionDate >= init;
             })
@@ -53,7 +53,7 @@ export class Wallet {
       if (end !== Date_Max)
         return new Wallet({
           id: this.id, 
-          name: `${this.Name}|-${end}`, 
+          name: `${this.name}|-${end}`, 
           transactions: this.Transactions.filter((t) => {
               return t.TransactionDate <= end;
             })
